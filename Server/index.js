@@ -40,5 +40,5 @@ app.use("/auth" ,authRoute);
 
 
 app.listen(port , function(){
-    console.log("a server is born");
+    console.log(`Server is online at port ${port}` );
 })

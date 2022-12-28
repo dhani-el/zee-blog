@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon Server/index.js"
+    "start":"node Server/index.js"
+  },
+  "engines": {
+      "node": "18.12.0"
   },
   "keywords": [],
   "author": "",
