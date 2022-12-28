@@ -8,7 +8,8 @@
     require("../Authentication/googleLoginUtils");
     const DB = require("../Schemas/userSchema");
     const {aFieldIsEmpty , encryptPassword} = require("../Authentication/signupUtil");
-
+// VARIABLES
+    const baseUrl = "https://zeesblog.onrender.com"
 // ENDPOINTS
 router.post("/signup" , async function(req,res){
    if (aFieldIsEmpty(req.body)) {
@@ -33,15 +34,15 @@ router.post("/oauth/signup" , async function(req,res){
 });
 
 router.post("/login" , passport.authenticate("local",{
-    successRedirect:"http://localhost:7000/blogs/0",
+    successRedirect:`${baseUrl}/blogs/0`,
     failureRedirect:"/failure"
 }));
 
 router.get("/oauth", passport.authenticate("google" ,{scope:["profile email"]}));
 
 router.get('/oauth2/redirect/google', passport.authenticate('google', {
-    successRedirect: 'http://localhost:7000/blogs/0',
-    failureRedirect: '/login'
+    successRedirect: `${baseUrl}/blogs/0`,
+    failureRedirect: `${baseUrl}/login`
   }));
 
 router.get('/oauth2/password', function(req, res){
