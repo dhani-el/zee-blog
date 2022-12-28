@@ -1,0 +1,3 @@
+home endpoint should send all the paginated data
+implement saving of google or third party authenticated data to the database
+upload to heroku
