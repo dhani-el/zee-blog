@@ -2,7 +2,7 @@ const baseUrl = "https://zeesblog.onrender.com"
 
 function isRegistrationComplete(req, res, next){
     if(!req.user.hasPassword){
-        return res.redirect(`${baseUrl}/auth/oauth2/password`);
+        return res.redirect("https://zeesblog.onrender.com/auth/oauth2/password");
     }
     next();
 }

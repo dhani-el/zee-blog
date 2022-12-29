@@ -34,15 +34,15 @@ router.post("/oauth/signup" , async function(req,res){
 });
 
 router.post("/login" , passport.authenticate("local",{
-    successRedirect:`${baseUrl}/blogs/0`,
+    successRedirect:"/blogs/0",
     failureRedirect:"/failure"
 }));
 
 router.get("/oauth", passport.authenticate("google" ,{scope:["profile email"]}));
 
 router.get("/oauth2/redirect/google", passport.authenticate('google', {
-    successRedirect: `${baseUrl}/blogs/0`,
-    failureRedirect: `${baseUrl}/login/0`
+    successRedirect: "/blogs/0",
+    failureRedirect: "/login/0"
   }));
 
 router.get('/oauth2/password', function(req, res){
