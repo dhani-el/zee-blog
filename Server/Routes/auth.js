@@ -40,7 +40,7 @@ router.post("/login" , passport.authenticate("local",{
 
 router.get("/oauth", passport.authenticate("google" ,{scope:["profile email"]}));
 
-router.get(`/oauth2/redirect/google`, passport.authenticate('google', {
+router.get("/oauth2/redirect/google", passport.authenticate('google', {
     successRedirect: `${baseUrl}/blogs/0`,
     failureRedirect: `${baseUrl}/login/0`
   }));
