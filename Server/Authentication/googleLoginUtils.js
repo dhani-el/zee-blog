@@ -6,7 +6,7 @@ const baseUrl = "https://zeesblog.onrender.com"
 module.exports = passport.use(new Strategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL:"auth/oauth2/redirect/google"
+    callbackURL:"/auth/oauth2/redirect/google"
 },async function(accToken,reToken,profile, callback){
     const curatedData ={firstname : profile.name.givenName,
                         lastname:profile.name.familyName,
