@@ -7,7 +7,7 @@ async function getBlogs(DB , startIndex , limit = 5){
 
 
 async function getBlogPost(DB , title){
-    const data = await DB.findOne().where("title").equals(title);
+    const data = await DB.find().where("title").equals(title);
     return data;
 }
 

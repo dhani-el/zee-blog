@@ -9,7 +9,7 @@
     const {getImageLinkFromS3} = require("../Utils/adminUtils");
     const {isRegistrationComplete,isUserLoggedIn} = require("../MiddleWare/AuthMiddleWare")
 // ROUTING  ENDPOINTS
-    router.get("/:page" , isUserLoggedIn, isRegistrationComplete, async function(req,res){
+    router.get("/:page" , async function(req,res){
         const data = await getBlogs(db_blog , req.params.page);
         console.log("authentication status",req.isAuthenticated());
         // console.log("this is the user",req.user);
@@ -27,7 +27,7 @@
         const data = await getBlogPost(db_blog , req.params.id);
         console.log(req.user);
         console.log(req.sessionID);
-         data.image = await getImageLinkFromS3(data.image);
+         data[0].image = await getImageLinkFromS3(data[0].image);
         res.json( data);
     });
  
