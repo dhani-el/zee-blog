@@ -3,6 +3,7 @@
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 const { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } = require("@aws-sdk/client-s3");  
 const multer = require("multer");
+const crypto = require("crypto");
  
 
 const BUCKET_NAME = process.env.BUCKET_NAME

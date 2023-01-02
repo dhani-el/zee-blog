@@ -11,8 +11,8 @@ router.post("/post", upload.single("image") ,async function(req,res){
     const imageName = await randomBytes(); 
     await saveImageToS3(imageName , req.file.buffer , req.file.mimetype);
     await BLOG_DB.create({...req.body , image: imageName});
-    res.send("post successful")
-})
+    res.send("post successful");
+});
 
 
 
