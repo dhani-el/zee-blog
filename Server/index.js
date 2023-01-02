@@ -10,7 +10,7 @@
         const port  = process.env.PORT || 3000;
         const app = express();
     // MIDDLEWARE
-        app.use(bodyParser.urlencoded({extended:true}));
+        app.use(bodyParser.urlencoded({extended:false}));
         app.use(bodyParser.json());
         app.use(session({
             secret: process.env.SESSION_SECRET,
