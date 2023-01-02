@@ -5,12 +5,13 @@
         const express = require("express");
         const mongoose = require('mongoose');
         const passport  = require("passport");
+        const bodyParser = require("body-parser");
         const session = require("express-session");
         const port  = process.env.PORT || 3000;
         const app = express();
     // MIDDLEWARE
-        app.use(express.urlencoded({extended:false}));
-        app.use(express.json());
+        app.use(bodyParser.urlencoded({extended:true}));
+        app.use(bodyParser.json());
         app.use(session({
             secret: process.env.SESSION_SECRET,
             resave: false,
