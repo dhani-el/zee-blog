@@ -28,11 +28,11 @@
         const commentsRoute = require("./Routes/comments");
         const authRoute = require("./Routes/auth");
 
+mongoose.set('strictQuery', false);
+
 mongoose.connect(process.env.DATABASE_URI, function(){
     console.log("Database Online");
 });
-
-mongoose.set('strictQuery', false);
 
 // ROUTING
 app.use("/admin" ,adminRoute);
