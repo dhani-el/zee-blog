@@ -1,7 +1,7 @@
 
 
 async function getBlogs(DB , startIndex , limit = 5){
-    const data = await DB.find().skip(startIndex * limit).limit(limit).select("title").select("genre").select("readTime" ).select("image").select("isPaid") ;
+    const data = await DB.find().skip(startIndex * limit).limit(limit).select("title").select("genre").select("readTime" ).select("image").select("isPaid").select("body") ;
     return data;
 }
 
