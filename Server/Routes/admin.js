@@ -8,8 +8,10 @@ router.use(express.urlencoded({extended:false}));
 
 
 router.post("/post", upload.single("image") ,async function(req,res){
-    const imageName = await randomBytes(); 
+    const imageName = req.buffer? await randomBytes() :  "no Image"
+    if(req.buffer){
     await saveImageToS3(imageName , req.file.buffer , req.file.mimetype);
+}
     console.log("req.body is " , req.body);
     await BLOG_DB.create({...req.body , image: imageName});
     res.send("post successful");
