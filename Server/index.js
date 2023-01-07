@@ -7,6 +7,7 @@
         const passport  = require("passport");
         const bodyParser = require("body-parser");
         const session = require("express-session");
+        const CORS = require("cors");
         const port  = process.env.PORT || 3000;
         const app = express();
     // MIDDLEWARE
@@ -21,6 +22,9 @@
         app.use(passport.initialize());
         app.use(passport.session())
         app.use(passport.authenticate("session"));
+        app.use(CORS({
+            origin:"http://localhost:3000"
+        }));
     // PACKAGE DEPENDENCIES
         const adminRoute  = require("./Routes/admin");
         const blogRoute = require("./Routes/blog");
