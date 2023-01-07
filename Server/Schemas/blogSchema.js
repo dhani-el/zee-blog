@@ -8,27 +8,23 @@ const BlogSchema = new mongoose.Schema({
     },
     body:{
         type: String,
-        required: true,
     },
     author:{
         type: String,
-        required: true,   
+        default:"Susan Omono Adebayo"  
     },
     genre:{
         type: String,
-        required: true,
     },
     readTime:{
-        type: String,
-        required: true, 
+        type: String, 
     },
     date:{
         type: String,
-        required: true, 
     },
     image:{
         type: String,
-        required: true,
+        default:"no Image"
     },
     isPaid:{
         type:Boolean,
