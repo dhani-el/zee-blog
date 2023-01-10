@@ -3,8 +3,8 @@ const router  = express.Router();
 const BLOG_DB = require("../Schemas/blogSchema");
 const{upload , saveImageToS3 , randomBytes} = require("../Utils/adminUtils");
 
-router.use(express.json());
-router.use(express.urlencoded({extended:false}));
+// router.use(express.json());
+// router.use(express.urlencoded({extended:false}));
 
 
 router.post("/post", upload.single("image") ,async function(req,res){
