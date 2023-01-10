@@ -9,6 +9,7 @@ router.use(express.urlencoded({extended:false}));
 
 router.post("/post", upload.single("image") ,async function(req,res){
     console.log("this is req . file",req.file);
+    console.log("this is req . files",req.files);
     const imageName = req.file.buffer ? await randomBytes() :  "no Image"
 
     if(req.file.buffer){
