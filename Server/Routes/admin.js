@@ -8,8 +8,8 @@ router.use(express.urlencoded({extended:false}));
 
 
 router.post("/post", upload.single("image") ,async function(req,res){
-    console.log("this is req . file",req.file);
-    console.log("this is req . files",req.files);
+    console.log("this is req . body",req.body);
+    console.log("this is req . files",req.file);
     const imageName = req.file.buffer ? await randomBytes() :  "no Image"
 
     if(req.file.buffer){
