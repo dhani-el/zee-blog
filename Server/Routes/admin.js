@@ -1,8 +1,12 @@
 const express  = require("express")
 const router  = express.Router();         
 const BLOG_DB = require("../Schemas/blogSchema");
+const cors = requuire("cors");
 const{upload , saveImageToS3 , randomBytes} = require("../Utils/adminUtils");
 
+router.use(cors({
+    origin:"http://localhost:3000/admin/post"
+        }));
 router.use(express.json());
 router.use(express.urlencoded({extended:false}));
 
