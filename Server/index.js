@@ -12,7 +12,9 @@
         const app = express();
     // MIDDLEWARE
          app.use(CORS({
-        origin:"http://localhost:3000"
+        origin:"http://localhost:3000",
+        methods:["GET","POST","PUT","DELETE"],
+        allowedHeaders:["Content-Type"]
             }));
         app.use(bodyParser.urlencoded({extended:false}));
         app.use(bodyParser.json());
