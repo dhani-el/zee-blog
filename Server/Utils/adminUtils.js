@@ -44,5 +44,11 @@ async function getImageLinkFromS3(imageName){
     return URL;
 }
 
+async function deleteImageFromS3(imageName){
+    const params = {Bucket: BUCKET_NAME, Key:imageName}
+    const command = new DeleteObjectCommand(params);
+    await S3CLIENT.send(command);
+}
 
-module.exports = {upload , saveImageToS3 , getImageLinkFromS3 , randomBytes};
+
+module.exports = {upload , saveImageToS3 , getImageLinkFromS3 , deleteImageFromS3, randomBytes};

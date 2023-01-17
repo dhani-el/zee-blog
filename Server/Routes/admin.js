@@ -1,7 +1,7 @@
 const express  = require("express")
 const router  = express.Router();         
 const BLOG_DB = require("../Schemas/blogSchema");
-const{upload , saveImageToS3 , randomBytes} = require("../Utils/adminUtils");
+const{upload , saveImageToS3 ,deleteImageFromS3, randomBytes} = require("../Utils/adminUtils");
 
 // router.use(express.json());
 // router.use(express.urlencoded({extended:false}));
@@ -23,6 +23,14 @@ router.post("/post", upload.single("image") ,async function(req,res){
     res.send("post successful");
 });
 
+
+router.delete("/delete/:title", async function(req, res){
+   const blogTitle = req.params.title;
+   const blogImageName = await BLOG_DB.find().where("title").equals(blogTitle).select("image");
+   await deleteImageFromS3(blogImageName[0].image);
+   await BLOG_DB.deleteOne({title:blogTitle});
+   res.send("blog post deleted");
+})
 
 
 module.exports = router
