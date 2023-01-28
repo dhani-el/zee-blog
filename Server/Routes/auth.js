@@ -15,6 +15,7 @@ router.post("/signup" , async function(req,res){
    if (aFieldIsEmpty(req.body)) {
         return res.send("a field is empty");
    } 
+   console.log(req.body)
    const hashedPassword = await encryptPassword(req.body.password);
    await DB.create({...req.body, password:hashedPassword});
    res.send("user created")
