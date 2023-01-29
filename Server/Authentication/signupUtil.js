@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 
 function aFieldIsEmpty(formData){
+    console.log("form data : ",formData);
     if ((formData.name === "")||(formData.email=== "")||(formData.password=== "")) {
         return true;
     }

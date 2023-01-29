@@ -15,8 +15,10 @@ router.post("/signup" , async function(req,res){
    if (aFieldIsEmpty(req.body)) {
         return res.send("a field is empty");
    } 
+   
    console.log("is any field empty",aFieldIsEmpty(req.body))
-   console.log(req.body)
+   console.log(" this is the request body ",req.body)
+
    if (req.body.name === undefined) {
     return res.send("body is empty ")
    }
