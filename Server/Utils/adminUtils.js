@@ -4,7 +4,9 @@ const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 const { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } = require("@aws-sdk/client-s3");  
 const multer = require("multer");
 const crypto = require("crypto");
- 
+const SGmail = require("@sendgrid/mail");
+
+SGmail.setApiKey(process.env.SEND_GRID_KEY);
 
 const BUCKET_NAME = process.env.BUCKET_NAME
 const BUCKET_REGION = process.env.BUCKET_REGION
@@ -17,6 +19,8 @@ const S3CLIENT = new S3Client({
                 },
     region : BUCKET_REGION,
 });
+const companyEmail = "ukuhoromotayo@gmailcom"
+const companyName = "ZEES Blog"
 
 const upload  = multer({Storage: multer.memoryStorage()});
 
@@ -50,5 +54,30 @@ async function deleteImageFromS3(imageName){
     await S3CLIENT.send(command);
 }
 
+async function sendEmail(email, subject , body , html = "<p><p/>"){
+    const msg = {
+        to: email,
+        from: {
+            name:companyName,
+            email: companyEmail},
+        subject: subject,
+        text:body,
+        html:html,
+    };
+    await SGmail.send(msg);
+} 
 
-module.exports = {upload , saveImageToS3 , getImageLinkFromS3 , deleteImageFromS3, randomBytes};
+async function sendEmails(emails, subject , body , html = "<p><p/>"){
+    const msg = {
+        to: [...emails],
+        from: {
+            name:companyName,
+            email: companyEmail},
+        subject: subject,
+        text:body,
+        html:html,
+    };
+    await SGmail.send(msg);
+}
+
+module.exports = {upload , saveImageToS3 , getImageLinkFromS3 , deleteImageFromS3, randomBytes,sendEmail,sendEmails};

@@ -1,7 +1,8 @@
 const express  = require("express")
 const router  = express.Router();         
 const BLOG_DB = require("../Schemas/blogSchema");
-const{upload , saveImageToS3 ,deleteImageFromS3, randomBytes} = require("../Utils/adminUtils");
+const USERS = require("../Schemas/userSchema")
+const{upload , saveImageToS3 ,deleteImageFromS3, randomBytes,sendEmail,sendEmails} = require("../Utils/adminUtils");
 
 // router.use(express.json());
 // router.use(express.urlencoded({extended:false}));
@@ -22,6 +23,15 @@ router.post("/post", upload.single("image") ,async function(req,res){
     await BLOG_DB.create({...req.body , image: imageName});
     res.send("post successful");
 });
+
+router.post("/newsletter" , async function(request , response){
+    const recipients = await USERS.find().where("newsletter").equals(true).select("email");
+    try{
+       await sendEmails(recipients, request.body.subject, request.body.textBody )
+    }catch(e){
+        console.log(e.message);
+    }
+})
 
 
 router.delete("/delete/:title", async function(req, res){

@@ -35,6 +35,7 @@
         const userRoute = require("./Routes/user");
         const commentsRoute = require("./Routes/comments");
         const authRoute = require("./Routes/auth");
+        const likeRoute = require("./Routes/likes");
 
 mongoose.set('strictQuery', false);
 
@@ -48,6 +49,7 @@ app.use("/blogs" ,blogRoute);
 app.use("/user" ,userRoute);
 app.use("/comments" ,commentsRoute);
 app.use("/auth" ,authRoute);
+app.use("/likes" ,likeRoute);
 
 
 app.listen(port , function(){

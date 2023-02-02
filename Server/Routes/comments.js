@@ -5,14 +5,23 @@ const {getComments,uploadComment} = require("../Utils/commentUtils");
 
 
 
-router.get("/:title" , async function(req, res){
-    res.json(await getComments(DB , 0 , req.params.title));
+router.get("/:title/:index" , async function(req, res){
+    res.json(await getComments(DB , index , req.params.title));
 });
 
-router.post("/" , async function(req, res){
+router.post("/post" , async function(req, res){
+    if(req.user === undefined ){
+        return res.send(" you need to be logged in to comment ")
+    }
+    const data = {
+        title: req.body.title,
+        username: req.user.name,
+        body: req.body.comment
+    }
     console.log(req.body);
-    await uploadComment(DB , {...req.body})
-    res.json("comment successfully sent ");
+    console.log(req.user);
+    await uploadComment(DB , data)
+    res.send("comment successfully sent ");
 });
 
 
