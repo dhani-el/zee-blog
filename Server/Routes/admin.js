@@ -25,9 +25,11 @@ router.post("/post", upload.single("image") ,async function(req,res){
 });
 
 router.post("/newsletter" , async function(request , response){
-    const recipients = await USERS.find().where("newsletter").equals(true).select("email");
+    console.log(request.body);
+    const recipients = await USERS.find().where("newsLetter").equals(true).select("email");
     try{
-       await sendEmails(recipients, request.body.subject, request.body.textBody )
+       await sendEmails(recipients, request.body.subject, request.body.textBody );
+       res.send("email sent");
     }catch(e){
         console.log(e.message);
     }
