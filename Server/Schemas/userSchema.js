@@ -15,7 +15,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required:true
     },
-    newsLetter: Boolean
+    newsLetter: {
+        type : Boolean,
+        default: false
+    }
 })
 
 
