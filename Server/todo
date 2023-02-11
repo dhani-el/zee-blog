@@ -1,3 +1,4 @@
 home endpoint should send all the paginated data
 implement saving of google or third party authenticated data to the database
 upload to heroku
+news Letter done but not on the frontend both news letter sender and opt in for news letter

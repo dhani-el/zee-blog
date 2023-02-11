@@ -1,6 +1,7 @@
 const mongoose  = require('mongoose');
 
 
+
 const BlogSchema = new mongoose.Schema({
     title:{
         type : String,
@@ -21,6 +22,7 @@ const BlogSchema = new mongoose.Schema({
     },
     date:{
         type: String,
+        default: new Date().toLocaleDateString()
     },
     image:{
         type: String,
