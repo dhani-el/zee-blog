@@ -29,7 +29,7 @@ router.post("/newsletter" , async function(request , response){
     const recipients = await USERS.find().where("newsLetter").equals(true).select("email");
     try{
        await sendEmails(recipients, request.body.subject, request.body.textBody );
-       res.send("email sent");
+       response.send("email sent");
     }catch(e){
         console.log(e.message);
     }
