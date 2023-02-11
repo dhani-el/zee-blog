@@ -68,8 +68,9 @@ async function sendEmail(email, subject , body , html = "<p><p/>"){
 } 
 
 async function sendEmails(emails, subject , body , html = "<p><p/>"){
-    const msg = {
-        to: [...emails],
+    emails.forEach(async email => {
+        const msg = {
+        to: email,
         from: {
             name:companyName,
             email: companyEmail},
@@ -78,6 +79,8 @@ async function sendEmails(emails, subject , body , html = "<p><p/>"){
         html:html,
     };
     await SGmail.send(msg);
+    });
+    
 }
 
 module.exports = {upload , saveImageToS3 , getImageLinkFromS3 , deleteImageFromS3, randomBytes,sendEmail,sendEmails};
