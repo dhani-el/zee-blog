@@ -19,7 +19,7 @@ const S3CLIENT = new S3Client({
                 },
     region : BUCKET_REGION,
 });
-const companyEmail = "ukuhoromotayo@gmailcom"
+const companyEmail = "ukuhoromotayo@gmail.com"
 const companyName = "ZEES Blog"
 
 const upload  = multer({Storage: multer.memoryStorage()});
