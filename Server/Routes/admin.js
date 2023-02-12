@@ -20,7 +20,7 @@ router.post("/post", upload.single("image") ,async function(req,res){
     await saveImageToS3(imageName , req.file.buffer , req.file.mimetype);
     console.log("this is the image name",imageName);
     console.log("req.body is " , req.body);
-    await BLOG_DB.create({...req.body , image: imageName , date:new Date().toLocaleString()});
+    await BLOG_DB.create({...req.body , image: imageName });
     res.send("post successful");
 });
 
