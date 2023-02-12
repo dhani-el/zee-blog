@@ -22,7 +22,6 @@ const BlogSchema = new mongoose.Schema({
     },
     date:{
         type: String,
-        default: new Date().toLocaleString()
     },
     image:{
         type: String,
