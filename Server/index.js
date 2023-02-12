@@ -7,6 +7,7 @@
         const passport  = require("passport");
         const bodyParser = require("body-parser");
         const session = require("express-session");
+        const mongoStore  = require("connect-mongo")(session)
         const CORS = require("cors");
         const port  = process.env.PORT || 3000;
         const app = express();
@@ -23,7 +24,12 @@
             secret: process.env.SESSION_SECRET,
             resave: false,
             saveUninitialized:false,
-            cookie:{secured : true}
+            cookie:{secured : true},
+            store: new mongoStore({
+                url : process.env.DATABASE_URI,
+                ttl: 14 * 24 * 60 * 60,
+                autoRemove: 'native'
+            })
         }));
         app.use(passport.initialize());
         app.use(passport.session())
