@@ -43,7 +43,7 @@ function aFieldIsEmpty(username , password){
 }
 
 async function userDoesNotExist(username){
-    const data = await DB.find().where("username").equals(username).select("username");
+    const data = await DB.find().where("name").equals(username).select("name");
     if (data.length == 0  ){
         return true;
     }
@@ -51,6 +51,6 @@ async function userDoesNotExist(username){
 }
 
 async function passwordIsIncorrect(password , username){
-    const hashed = await DB.find().where("username").equals(username).select("password");
+    const hashed = await DB.find().where("name").equals(username).select("password");
    return !(await bcrypt.compare(password ,hashed[0].password ))
 }
