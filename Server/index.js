@@ -7,7 +7,7 @@
         const passport  = require("passport");
         const bodyParser = require("body-parser");
         const session = require("express-session");
-        const mongoStore  = require("connect-mongo")(session)
+        const MongoStore  = require("connect-mongo");
         const CORS = require("cors");
         const port  = process.env.PORT || 3000;
         const app = express();
@@ -25,10 +25,11 @@
             resave: false,
             saveUninitialized:false,
             cookie:{secured : true},
-            store: new mongoStore({
-                url : process.env.DATABASE_URI,
-                ttl: 14 * 24 * 60 * 60,
-                autoRemove: 'native'
+            store: MongoStore.create({
+                mongoUrl : process.env.DATABASE_URI,
+                ttl: 2 * 24 * 60 * 60,
+                autoRemove: 'native',
+                touchAfter: 24 * 3600
             })
         }));
         app.use(passport.initialize());
