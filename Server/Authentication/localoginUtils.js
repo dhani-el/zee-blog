@@ -15,7 +15,7 @@ module.exports = passport.use(new Strategy(async function _verify(username,passw
     if (await passwordIsIncorrect(password ,username)) {
             return done(null, false);
     }
-    const user = await DB.find().where("username").equals(username).select("firstname").select("lastname").select("username").select("email");
+    const user = await DB.find().where("name").equals(username).select("name").select("email");
     return done(null , user);
 }));
 
