@@ -12,6 +12,7 @@
         const port  = process.env.PORT || 3000;
         const app = express();
     // MIDDLEWARE
+         app.enable('trust proxy')
          app.use(CORS({
         origin:"http://localhost:3000",
         methods:['GET','POST','PUT','DELETE'],
