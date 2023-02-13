@@ -12,6 +12,9 @@
     router.get("/:page" , async function(req,res){
         const data = await getBlogs(db_blog , req.params.page);
         console.log("authentication status",req.isAuthenticated());
+        if(req.user !== undefined){
+            console.log(req.user);
+        }
         // console.log("this is the user",req.user);
         console.log("this is the session id",req.sessionID);
 
