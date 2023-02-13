@@ -24,7 +24,11 @@
             secret: process.env.SESSION_SECRET,
             resave: false,
             saveUninitialized:false,
-            cookie:{secured : true},
+            cookie:{
+                sameSite:"none",
+                secure : true,
+                httpOnly: true,
+            },
             store: MongoStore.create({
                 mongoUrl : process.env.DATABASE_URI,
                 ttl: 2 * 24 * 60 * 60,
