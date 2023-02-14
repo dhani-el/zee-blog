@@ -9,4 +9,8 @@ async function getLikes(blogTitle){
     return numberOlikes;
 };
 
-module.exports = {addLike, getLikes}
+async function removeLike(data){
+    await DB.deleteOne({username:data.username});
+}
+
+module.exports = {addLike, getLikes, removeLike}
