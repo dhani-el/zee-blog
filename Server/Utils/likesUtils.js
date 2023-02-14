@@ -5,7 +5,7 @@ async function addLike(data){
 }
 
 async function getLikes(blogTitle){
-    const numberOlikes = await DB.find().where(title).equals(blogTitle).count();
+    const numberOlikes = await DB.find().where("title").equals(blogTitle).count();
     return numberOlikes;
 };
 
