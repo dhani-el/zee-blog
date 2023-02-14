@@ -4,7 +4,7 @@ const {addLike , getLikes, removeLike} = require("../Utils/likesUtils");
 
 
 router.post("/post" , async function(req, res){
-    if (req.user.name === undefined) {
+    if (req.user === undefined) {
         return res.send("you need to be logged in to like a post");
     }
     const data = {title : req.body.title , username: req.user.name}
@@ -12,7 +12,7 @@ router.post("/post" , async function(req, res){
 });
 
 router.delete("/delete" , async function(req, res){
-    if (req.user.name === undefined) {
+    if (req.user === undefined) {
         return res.send("you need to be logged in to like a post");
     }
     const data = {title : req.body.title , username: req.user.name}
