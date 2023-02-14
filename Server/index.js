@@ -12,7 +12,7 @@
         const port  = process.env.PORT || 3000;
         const app = express();
     // MIDDLEWARE
-         app.enable('trust proxy')
+         app.enable('trust proxy', 1)
          app.use(CORS({
         origin:"http://localhost:3000",
         methods:['GET','POST','PUT','DELETE'],
@@ -26,11 +26,10 @@
             resave: false,
             saveUninitialized:false,
             cookie:{
-                domain: "localhost",
                 sameSite:"none",
                 secure : false,
                 httpOnly: false,
-                credentials:"include"
+                credentials:"include",
             },
             store: MongoStore.create({
                 mongoUrl : process.env.DATABASE_URI,
