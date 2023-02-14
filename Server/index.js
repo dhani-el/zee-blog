@@ -26,9 +26,11 @@
             resave: false,
             saveUninitialized:false,
             cookie:{
+                domain: "localhost",
                 sameSite:"none",
-                secure : "false",
-                httpOnly: true,
+                secure : false,
+                httpOnly: false,
+                credentials:"include"
             },
             store: MongoStore.create({
                 mongoUrl : process.env.DATABASE_URI,
