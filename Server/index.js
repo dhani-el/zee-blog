@@ -27,7 +27,7 @@
             saveUninitialized:false,
             cookie:{
                 sameSite:"none",
-                secure : true,
+                secure : "false",
                 httpOnly: true,
             },
             store: MongoStore.create({
