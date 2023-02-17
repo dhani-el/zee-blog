@@ -7,7 +7,7 @@ router.post("/post" , async function(req, res){
     if (req.user === undefined) {
         return res.send("you need to be logged in to like a post");
     }
-    const data = {title : req.body.title , username: req.user.name}
+    const data = {title : req.body.title , username: req.user["0"].name}
     await addLike(data);
 });
 
