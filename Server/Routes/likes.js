@@ -7,6 +7,8 @@ router.post("/post" , async function(req, res){
     if (req.user === undefined) {
         return res.send("you need to be logged in to like a post");
     }
+    console.log(req.body.title , " is about to get a like");
+    console.log(req.user["0"].name , " is about to drop a like ");
     const data = {title : req.body.title , username: req.user["0"].name}
     await addLike(data);
 });
@@ -20,8 +22,8 @@ router.delete("/delete" , async function(req, res){
 });
 
 router.get("/:title" , async function(req, res){
-   const likes =  await getLikes(req.params.title);
-   res.json(likes)
+   let likes =  await getLikes(req.params.title);
+   res.send(likes)
 });
 
 module.exports = router
