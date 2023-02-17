@@ -23,7 +23,8 @@ router.delete("/delete" , async function(req, res){
 
 router.get("/:title" , async function(req, res){
    let likes =  await getLikes(req.params.title);
-   res.send(likes)
+   console.log("sending likes of value" , await likes);
+   res.json(await likes)
 });
 
 module.exports = router
