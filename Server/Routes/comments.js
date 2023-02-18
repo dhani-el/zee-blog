@@ -6,7 +6,7 @@ const {getComments,uploadComment} = require("../Utils/commentUtils");
 
 
 router.get("/:title/:index" , async function(req, res){
-    res.json(await getComments(DB , startIndex , req.params.title));
+    res.json(await getComments(DB , req.params.index , req.params.title));
 });
 
 router.post("/post" , async function(req, res){
