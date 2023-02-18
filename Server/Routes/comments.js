@@ -19,7 +19,7 @@ router.post("/post" , async function(req, res){
         console.log(req.body);
         console.log(req.user["0"].name);
         await uploadComment(DB , data)
-        res.send("comment successfully sent ");
+        return res.send("comment successfully sent ");
     }
     return res.send(" you need to be logged in to comment ")
 
