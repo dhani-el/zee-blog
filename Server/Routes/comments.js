@@ -13,7 +13,7 @@ router.post("/post" , async function(req, res){
     if(req.user === undefined ){
         const data = {
             title: req.body.title,
-            username: req.user.name,
+            username: req.user[0].name,
             body: req.body.comment
         }
         console.log(req.body);
