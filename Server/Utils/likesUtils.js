@@ -6,14 +6,14 @@ async function addLike(data){
 }
 
 async function getLikes(blogTitle){
-    const numberOlikes = await DB.count({name:blogTitle});
+    const numberOlikes = await DB.count({title:blogTitle});
     console.log("current number of likes ",numberOlikes);
     return numberOlikes;
 };
 
 async function removeLike(data){
     await DB.deleteOne({username:data.username});
-    console.log("like removed");
+    console.log("like removed"); 
 }
 
 module.exports = {addLike, getLikes, removeLike}

@@ -4,6 +4,7 @@ const {addLike , getLikes, removeLike} = require("../Utils/likesUtils");
 
 
 router.post("/post" , async function(req, res){
+    console.log("cheers");
     console.log("the result of req.user !== undefined is " , req.user !== undefined);
     if (req.user !== undefined) {    
         console.log(req.body.title , " is about to get a like");
@@ -27,6 +28,6 @@ router.get("/:title" , async function(req, res){
    let likes =  await getLikes(req.params.title);
    console.log("sending likes of value" , await likes);
    res.json(await likes)
-});
+});                        
 
 module.exports = router
