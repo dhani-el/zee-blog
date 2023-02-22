@@ -11,5 +11,9 @@ async function getBlogPost(DB , title){
     return data;
 }
 
+async function getGenres(DB , genre, startIndex , limit = 5){
+    const data = await DB.find().where("genre").equals(genre).sort({_id:-1}).skip(startIndex * limit).limit(limit);
+    return data;
+}
 
-module.exports = {getBlogs , getBlogPost}
+module.exports = {getBlogs , getBlogPost, getGenres}

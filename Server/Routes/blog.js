@@ -5,7 +5,7 @@
 
 // INTERNAL IMPORTS
     const db_blog = require("../Schemas/blogSchema");
-    const {getBlogs, getBlogPost} = require("../Utils/blogUtils");
+    const {getBlogs, getBlogPost, getGenres} = require("../Utils/blogUtils");
     const {getImageLinkFromS3} = require("../Utils/adminUtils");
     const {isRegistrationComplete,isUserLoggedIn} = require("../MiddleWare/AuthMiddleWare")
 // ROUTING  ENDPOINTS
@@ -32,6 +32,11 @@
         console.log(req.sessionID);
          data[0].image = await getImageLinkFromS3(data[0].image);
         res.json( data);
+    });
+
+    router.get("/genres/:genre/:index", async function(req, res){
+        const data = await getGenres(db_blog, req.params.genre , req.params.index);
+        res.json(data);
     });
  
 // EXPORT

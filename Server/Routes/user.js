@@ -1,10 +1,14 @@
 const express   = require("express");
 const router  = express.Router();
+const {userExist} = require('../Utils/userUtils')
 
 
-router.get("/" , function(req,res){
-    res.send("user end point")
+router.post("/exists" , async function(req,res){
+    const result  = await userExist(req.body.username);
+    res.json(result);
 })
+
+
 
 
 module.exports = router
