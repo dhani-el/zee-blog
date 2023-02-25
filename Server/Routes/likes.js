@@ -11,7 +11,7 @@ router.post("/post" , async function(req, res){
         console.log(req.user["0"].name , " is about to drop a like ");
         const data = {title : req.body.title , username: req.user["0"].name}
         await addLike(data);
-        return
+        return res.send("liked")
     }
     return res.send("you need to be logged in to like a post");
 });
