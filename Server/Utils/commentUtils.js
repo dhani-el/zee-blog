@@ -1,6 +1,6 @@
 
 
-async function getComments(DB , startIndex = 0,title , limit = 5 ){
+async function getComments(DB ,title , startIndex = 0 , limit = 5 ){
     const data = await DB.find().where("title").equals(title).skip(startIndex * limit).limit(limit);
     return data;
 }
