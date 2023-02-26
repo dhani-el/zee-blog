@@ -40,6 +40,15 @@ router.post("/oauth/signup" , async function(req,res){
    res.send("user created")
 });
 
+
+router.post("/login" , passport.authenticate("local",{successRedirect:"https://zeesblog.onrender.com/auth/user",failureRedirect:"/failure"}) , function(req , res){
+console.log("inside post request");   
+if(req.isAuthenticated()){
+        console.log("just logged in ",req.user);
+        res.json(req.user);
+    }
+} );
+
 router.get("/user", function(req, res){
     if(req.isAuthenticated()){
         res.json(req.user);
@@ -47,13 +56,6 @@ router.get("/user", function(req, res){
     res.send("you are not logged in how did you even get to this stage cheeky soul");
 });
 
-router.post("/login" , passport.authenticate("local",{successRedirect:"user",failureRedirect:"/failure"}) , function(req , res){
-console.log("inside post request");   
-if(req.isAuthenticated()){
-        console.log("just logged in ",req.user);
-        res.json(req.user);
-    }
-} );
 
 router.get("/oauth", passport.authenticate("google" ,{scope:["profile email"]}));
 
