@@ -40,8 +40,9 @@ router.post("/oauth/signup" , async function(req,res){
    res.send("user created")
 });
 
-router.post("/login" , passport.authenticate("local",{successRedirect:"/blogs/0",failureRedirect:"/failure"}) , function(req , res){
-    if(req.user !== undefined){
+router.post("/login" , passport.authenticate("local",{successRedirect:"http://localhost:3000",failureRedirect:"/failure"}) , function(req , res){
+    if(req.isAuthenticated()){
+        console.log("just logged in ",req.user);
         res.json(req.user);
     }
 } );
