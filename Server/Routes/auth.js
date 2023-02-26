@@ -40,7 +40,11 @@ router.post("/oauth/signup" , async function(req,res){
    res.send("user created")
 });
 
-router.post("/login" , passport.authenticate("local",{successRedirect:"/blogs/0",failureRedirect:"/failure"}) , function(req , res){
+router.get('/user', function(req, res){
+    res.send(req.user);
+});
+
+router.post("/login" , passport.authenticate("local",{successRedirect:"/user",failureRedirect:"/failure"}) , function(req , res){
 console.log("inside post request");   
 if(req.isAuthenticated()){
         console.log("just logged in ",req.user);
@@ -58,5 +62,6 @@ router.get("/oauth2/redirect/google", passport.authenticate('google', {
 router.get('/oauth2/password', function(req, res){
     res.send("pass in your password");
 });
+
 
 module.exports = router;
