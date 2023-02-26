@@ -40,10 +40,11 @@ router.post("/oauth/signup" , async function(req,res){
    res.send("user created")
 });
 
-router.post("/login" , passport.authenticate("local",{
-    successRedirect:"/blogs/0",
-    failureRedirect:"/failure"
-}));
+router.post("/login" , passport.authenticate("local",{successRedirect:"/blogs/0",failureRedirect:"/failure"}) , function(req , res){
+    if(req.user !== undefined){
+        res.json(req.user);
+    }
+} );
 
 router.get("/oauth", passport.authenticate("google" ,{scope:["profile email"]}));
 
