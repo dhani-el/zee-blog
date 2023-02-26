@@ -1,7 +1,7 @@
 
 
-async function getComments(DB ,title , startIndex = 0 , limit = 5 ){
-    const data = await DB.find().where("title").equals(title).skip(startIndex * limit).limit(limit);
+async function getComments(DB ,title , startIndex = 0 , limit = 20 ){
+    const data = await DB.find().sort({_id:-1}).where("title").equals(title).skip(startIndex * limit).limit(limit);
     return data;
 }
 
