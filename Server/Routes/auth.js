@@ -51,7 +51,7 @@ if(req.isAuthenticated()){
 
 router.get("/user", function(req, res){
     if(req.isAuthenticated()){
-        res.json(req.user);
+       return res.json(req.user);
     }
     res.send("you are not logged in how did you even get to this stage cheeky soul");
 });
