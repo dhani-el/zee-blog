@@ -22,6 +22,7 @@ router.delete("/delete" , async function(req, res){
     }
     const data = {title : req.body.title , username: req.user["0"].name}
     await removeLike(data);
+    return res.send("liked")
 });
 
 router.get("/:title" , async function(req, res){
