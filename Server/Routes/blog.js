@@ -40,6 +40,7 @@
     });
 
     router.get("/search/:title", async function(req, res){
+        console.log("this is what is to be searched for", req.params.title);
        const searchResult = await getSearchResult(db_blog , req.params.title);
        return res.json(searchResult);
     });
