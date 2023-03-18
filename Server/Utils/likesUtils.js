@@ -5,11 +5,12 @@ async function addLike(data){
     console.log("this is the data received",data);
     console.log("this is the initial length", likedInitially.length);
     console.log("this is the initial value", likedInitially);
-    if (likedInitially.length == 0) {
-        return -1;
+    if (likedInitially.length !== 0) {
+        await DB.create({...data});
+        return console.log("like added");
     }
-    await DB.create({...data});
-    console.log("like added");
+    console.log("ban kai");
+    return -1
 }
 
 async function getLikes(blogTitle){
