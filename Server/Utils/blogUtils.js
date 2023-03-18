@@ -16,4 +16,9 @@ async function getGenres(DB , genre, startIndex , limit = 5){
     return data;
 }
 
-module.exports = {getBlogs , getBlogPost, getGenres}
+async function getSearchResult(DB, title){
+    const searchResult = await DB.find({title:title});
+    return searchResult;
+}
+
+module.exports = {getBlogs , getBlogPost, getGenres, getSearchResult}
