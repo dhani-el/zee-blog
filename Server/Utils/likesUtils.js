@@ -1,6 +1,12 @@
 const DB = require("../Schemas/likeSchema")
 
 async function addLike(data){
+    let likedInitially = await DB.findOne({title:data.title,username:data.username});
+    if (likedInitially.length === 0) {
+        console.log("this is the initial length", likedInitially.length);
+        console.log("this is the initial value", likedInitially);
+        return;
+    }
     await DB.create({...data});
     console.log("like added");
 }
