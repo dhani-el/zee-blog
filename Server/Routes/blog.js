@@ -48,8 +48,8 @@
     });
 
     router.post("/newsLetter",async function(req,res){
-        console.log(res.body);
-        await addEmail(res.body.email, res.body.name);
+        console.log(req.body);
+        await addEmail(req.body.email, req.body.name);
         res.send("subscribed")
     });
  
