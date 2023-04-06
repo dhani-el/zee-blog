@@ -8,7 +8,7 @@
     const {getBlogs, getBlogPost, getGenres,getSearchResult} = require("../Utils/blogUtils");
     const {getImageLinkFromS3} = require("../Utils/adminUtils");
     const {isRegistrationComplete,isUserLoggedIn} = require("../MiddleWare/AuthMiddleWare")
-    const {addEmail} = require("../Utils/newsLetterUtils")
+    const addEmail = require("../Utils/newsLetterUtils")
 // ROUTING  ENDPOINTS
     router.get("/:page" , async function(req,res){
         const data = await getBlogs(db_blog , req.params.page);
