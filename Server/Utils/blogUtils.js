@@ -17,7 +17,7 @@ async function getGenres(DB , genre, startIndex , limit = 5){
 }
 
 async function getSearchResult(DB, title){
-    const searchResult = await DB.find({title:title});
+    const searchResult = await DB.find({title:title}).sort({_id:-1});
     return searchResult;
 }
 

@@ -83,4 +83,13 @@ async function sendEmails(emails, subject , body , html = "<p><p/>"){
     
 }
 
-module.exports = {upload , saveImageToS3 , getImageLinkFromS3 , deleteImageFromS3, randomBytes,sendEmail,sendEmails};
+function isAnAdmin(adminName){
+    switch (admin) {
+        case "susan": return true;
+        case "daniel": return true;
+        case "rashad": return true;
+        default: return false;
+    }
+}
+
+module.exports = {upload , saveImageToS3 , getImageLinkFromS3 , deleteImageFromS3, randomBytes,sendEmail,sendEmails,isAnAdmin};
