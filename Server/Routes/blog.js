@@ -48,7 +48,9 @@
     });
 
     router.post("/newsLetter",async function(req,res){
+        console.log(res.body);
         await addEmail(res.body.email, res.body.name);
+        res.send("subscribed")
     });
  
 // EXPORT
