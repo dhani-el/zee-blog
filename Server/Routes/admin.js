@@ -40,7 +40,7 @@ router.post("/newsletter" , async function(request , response){
 
 
 router.delete("/delete/:title", async function(req, res){
-    if(req.user["0"].name !== undefined && isAnAdmin(req.user["0"].name)){
+    if(req.user !== undefined && isAnAdmin(req.user["0"].name)){
          const blogTitle = req.params.title;
          const blogImageName = await BLOG_DB.find().where("title").equals(blogTitle).select("image");
          await deleteImageFromS3(blogImageName[0].image);
