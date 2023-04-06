@@ -5,4 +5,4 @@ async function addEmail(email, name){
     await DB.create({email:email, name:name});
 }
 
-modules.export = addEmail
+module.exports = addEmail
