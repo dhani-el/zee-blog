@@ -49,7 +49,7 @@
 
     router.post("/newsLetter",async function(req,res){
         console.log(req.body);
-        await addEmail(req.body.email, req.body.name);
+        await addEmail(req.body.email);
         res.send("subscribed")
     });
  

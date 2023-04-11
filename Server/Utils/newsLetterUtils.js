@@ -1,8 +1,8 @@
 const DB = require("../Schemas/newsLetterSchema");
 
 
-async function addEmail(email, name){
-    await DB.create({email:email, name:name});
+async function addEmail(email){
+    await DB.create({email:email});
 }
 
 module.exports = addEmail
