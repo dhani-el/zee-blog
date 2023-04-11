@@ -27,7 +27,7 @@ router.post("/post", upload.single("image") ,async function(req,res){
 
 router.post("/newsletter" , async function(request , response){
     console.log(request.body);
-    if(req.user !== undefined && isAnAdmin(req.user["0"].name)){
+    // if(req.user !== undefined && isAnAdmin(req.user["0"].name)){
     const first_Array_of_emails = await USERS.find().where("newsLetter").equals(true).select("email");
     const second_Array_of_emails = await SOME_EMAILS.find().select("email");
     const recipients = [...first_Array_of_emails, ...second_Array_of_emails];
@@ -38,8 +38,8 @@ router.post("/newsletter" , async function(request , response){
         console.log(e.message);
     }
 }
-        res.send("cheeky corny bastard")
-}
+        // res.send("cheeky corny bastard")
+// }
 )
 
 
