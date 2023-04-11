@@ -73,9 +73,9 @@ async function sendEmails(emails, subject , body , html = "<p><p/>"){
         to: email,
         from: {
             name:companyName,
-            email: companyEmail},
+            },
         subject: subject,
-        text:body,
+        text: body,
         html:html,
     };
     await SGmail.send(msg);
