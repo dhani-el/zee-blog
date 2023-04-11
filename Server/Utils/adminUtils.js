@@ -62,7 +62,7 @@ async function sendEmail(email, subject , body , html = "<p><p/>"){
             email: companyEmail},
         subject: subject,
         text:body,
-        html:html,
+        // html:html,
     };
     await SGmail.send(msg);
 } 
@@ -73,10 +73,11 @@ async function sendEmails(emails, subject , body , html = "<p><p/>"){
         to: email,
         from: {
             name:companyName,
+            email: companyEmail
             },
         subject: subject,
         text: body,
-        html:html,
+        // html:html,
     };
     await SGmail.send(msg);
     });
