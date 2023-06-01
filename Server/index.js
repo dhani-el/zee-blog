@@ -8,6 +8,7 @@
         const session = require("express-session");
         const port  = process.env.PORT || 3000;
         const app = express();
+        const cors = require('cors');
     // MIDDLEWARE
         app.use(express.urlencoded({extended:false}));
         app.use(express.json());
@@ -20,6 +21,10 @@
         app.use(passport.initialize());
         app.use(passport.session())
         app.use(passport.authenticate("session"));
+        app.use(cors({
+            origin:["https://Zees-blog.netlify.app"],
+            methods:['GET','POST','DELETE','UPDATE','PUT','PATCH'],
+        }))
     // PACKAGE DEPENDENCIES
         const adminRoute  = require("./Routes/admin");
         const blogRoute = require("./Routes/blog");
