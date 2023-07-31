@@ -50,7 +50,7 @@ router.delete("/delete/:title", async function(req, res){
          console.log("blog image name is ",blogImageName[0].image);
         //  await deleteImageFromS3(blogImageName[0].image);
          await BLOG_DB.deleteOne({title:blogTitle});
-         res.send("blog post deleted");
+         return res.send("blog post deleted");
     }
     
     res.send("cheeky corny bastard")
