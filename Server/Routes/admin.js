@@ -44,14 +44,13 @@ router.post("/newsletter" , async function(request , response){
 
 
 router.delete("/delete/:title", async function(req, res){
-    console.log('user trying to delete is',req.user);
     if(req.user !== undefined && isAnAdmin(req.user['0'].name)){
          const blogTitle = req.params.title;
          const blogImageName = await BLOG_DB.find().where("title").equals(blogTitle).select("image");
-         console.log('blog  image name is ', blogImageName);
-        //  await deleteImageFromS3(blogImageName['0'].image);
-        //  await BLOG_DB.deleteOne({title:blogTitle});
-        //  return res.send("blog post deleted");
+         console.log("blog image name is ",blogImageName[0].image);
+         await deleteImageFromS3(blogImageName[0].image);
+         await BLOG_DB.deleteOne({title:blogTitle});
+         res.send("blog post deleted");
     }
     
     res.send("cheeky corny bastard")
