@@ -48,7 +48,7 @@ router.delete("/delete/:title", async function(req, res){
     if(req.user !== undefined && isAnAdmin(req.user['0'].name)){
          const blogTitle = req.params.title;
          const blogImageName = await BLOG_DB.find().where("title").equals(blogTitle).select("image");
-         await deleteImageFromS3(blogImageName[0].image);
+         await deleteImageFromS3(blogImageName['0'].image);
          await BLOG_DB.deleteOne({title:blogTitle});
          return res.send("blog post deleted");
     }
