@@ -44,6 +44,7 @@ router.post("/newsletter" , async function(request , response){
 
 
 router.delete("/delete/:title", async function(req, res){
+    console.log(req.user["0"].name);
     if(req.user !== undefined && isAnAdmin(req.user["0"].name)){
          const blogTitle = req.params.title;
          const blogImageName = await BLOG_DB.find().where("title").equals(blogTitle).select("image");

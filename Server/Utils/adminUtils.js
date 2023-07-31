@@ -85,9 +85,9 @@ async function sendEmails(emails, subject , body , html = "<p><p/>"){
 }
 
 function isAnAdmin(adminName){
-    switch (admin) {
+    switch (adminName) {
         case "susan": return true;
-        case "daniel": return true;
+        case "omotayo": return true;
         case "rashad": return true;
         default: return false;
     }
