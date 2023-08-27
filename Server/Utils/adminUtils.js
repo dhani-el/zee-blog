@@ -88,7 +88,7 @@ function isAnAdmin(adminName){
     switch (adminName) {
         case "susan": return true;
         case "omotayo": return true;
-        case "rashad": return true;
+        case "rashadx": return true;
         default: return false;
     }
 }
