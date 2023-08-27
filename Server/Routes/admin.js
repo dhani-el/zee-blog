@@ -11,7 +11,7 @@ const{upload , saveImageToS3 ,deleteImageFromS3, randomBytes,sendEmails,isAnAdmi
 
 router.post("/post", upload.single("image") ,async function(req,res){
     console.log("this is req . body",req.body);
-    // console.log("this is req . files",req.file);
+    console.log("this is req . files",req.file);
     const imageName = await randomBytes();
 
     if(!req.file.buffer){
