@@ -10,7 +10,6 @@ router.get("/:title/:index" , async function(req, res){
 });
 
 router.post("/post" , async function(req, res){
-    if(req.user !== undefined ){
         const data = {
             title: req.body.title,
             username: req.user["0"].name,
@@ -20,8 +19,6 @@ router.post("/post" , async function(req, res){
         console.log(req.user["0"].name);
         await uploadComment(Db , data)
         return res.json(await getComments(Db , req.body.title));
-    }
-    return res.send(" you need to be logged in to comment ")
 
 });
 
