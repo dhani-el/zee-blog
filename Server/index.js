@@ -9,6 +9,7 @@
         const session = require("express-session");
         const MongoStore  = require("connect-mongo");
         const CORS = require("cors");
+        const path = require('path')
         const port  = process.env.PORT || 3000;
         const app = express();
     // MIDDLEWARE
@@ -41,6 +42,8 @@
         app.use(passport.initialize());
         app.use(passport.session())
         app.use(passport.authenticate("session"));
+        app.use(express.static(path.join(__dirname, 'dist')));
+
         
     // PACKAGE DEPENDENCIES
         const adminRoute  = require("./Routes/admin");
@@ -63,6 +66,11 @@ app.use("/user" ,userRoute);
 app.use("/comments" ,commentsRoute);
 app.use("/auth" ,authRoute);
 app.use("/likes" ,likeRoute);
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__filename, 'dist/index.html'));
+  });
 
 
 app.listen(port , function(){
