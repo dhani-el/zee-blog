@@ -28,7 +28,7 @@
             saveUninitialized:false,
             cookie:{
                 sameSite:'strict',
-                secure : false,
+                secure : true,
                 httpOnly: false,
                 credentials:"include",
             },
