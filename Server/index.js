@@ -9,6 +9,7 @@
         const session = require("express-session");
         const MongoStore  = require("connect-mongo");
         const CORS = require("cors");
+        const path = require('path')
         const port  = process.env.PORT || 3000;
         const app = express();
     // MIDDLEWARE
@@ -26,7 +27,7 @@
             resave: false,
             saveUninitialized:false,
             cookie:{
-                sameSite:"none",
+                sameSite:'strict',
                 secure : true,
                 httpOnly: false,
                 credentials:"include",
@@ -41,6 +42,7 @@
         app.use(passport.initialize());
         app.use(passport.session())
         app.use(passport.authenticate("session"));
+
         
     // PACKAGE DEPENDENCIES
         const adminRoute  = require("./Routes/admin");
@@ -57,12 +59,17 @@ mongoose.connect(process.env.DATABASE_URI, function(){
 });
 
 // ROUTING
-app.use("/admin" ,adminRoute);
-app.use("/blogs" ,blogRoute);
-app.use("/user" ,userRoute);
-app.use("/comments" ,commentsRoute);
-app.use("/auth" ,authRoute);
-app.use("/likes" ,likeRoute);
+app.use("/admin/api" ,adminRoute);
+app.use("/blogs/api" ,blogRoute);
+app.use("/user/api" ,userRoute);
+app.use("/comments/api" ,commentsRoute);
+app.use("/auth/api" ,authRoute);
+app.use("/likes/api" ,likeRoute);
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build/index.html'));
+  });
 
 
 app.listen(port , function(){

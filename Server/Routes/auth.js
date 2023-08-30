@@ -41,7 +41,7 @@ router.post("/oauth/signup" , async function(req,res){
 });
 
 
-router.post("/login" , passport.authenticate("local",{successRedirect:"https://zeesblog.onrender.com/auth/user",failureRedirect:"/failure"}) , function(req , res){
+router.post("/login" , passport.authenticate("local",{successRedirect:"auth/api/user",failureRedirect:"/failure"}) , function(req , res){
 console.log("inside post request");   
 if(req.isAuthenticated()){
         console.log("just logged in ",req.user);
