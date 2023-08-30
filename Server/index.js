@@ -27,8 +27,8 @@
             resave: false,
             saveUninitialized:false,
             cookie:{
-                sameSite:"none",
-                secure : true,
+                sameSite:'strict',
+                secure : false,
                 httpOnly: false,
                 credentials:"include",
             },
@@ -42,7 +42,6 @@
         app.use(passport.initialize());
         app.use(passport.session())
         app.use(passport.authenticate("session"));
-        app.use(express.static(path.join(__dirname, 'dist')));
 
         
     // PACKAGE DEPENDENCIES
@@ -60,16 +59,16 @@ mongoose.connect(process.env.DATABASE_URI, function(){
 });
 
 // ROUTING
-app.use("/admin" ,adminRoute);
-app.use("/blogs" ,blogRoute);
-app.use("/user" ,userRoute);
-app.use("/comments" ,commentsRoute);
-app.use("/auth" ,authRoute);
-app.use("/likes" ,likeRoute);
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use("/admin/api" ,adminRoute);
+app.use("/blogs/api" ,blogRoute);
+app.use("/user/api" ,userRoute);
+app.use("/comments/api" ,commentsRoute);
+app.use("/auth/api" ,authRoute);
+app.use("/likes/api" ,likeRoute);
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__filename, 'dist/index.html'));
+    res.sendFile(path.join(__dirname, 'build/index.html'));
   });
 
 
