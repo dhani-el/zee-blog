@@ -31,7 +31,9 @@
         const data = await getBlogPost(db_blog , req.params.id);
         console.log(req.user);
         console.log(req.sessionID);
-         data[0].image = await getImageLinkFromS3(data[0].image);
+        if(data[0].image != undefined && data[0].image != null){
+            data[0].image = await getImageLinkFromS3(data[0].image);
+        }
         res.json( data);
     });
 
