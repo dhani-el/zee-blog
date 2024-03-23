@@ -15,7 +15,7 @@
     // MIDDLEWARE
          app.enable('trust proxy', 1)
          app.use(CORS({
-        origin:["http://localhost:3000","https://zees-blog.netlify.app","https://zees-blog.vercel.app"],
+        origin:["http://localhost:3000","https://zees-blog.netlify.app","https://zeesblog.com.ng"],
         methods:['GET','POST','PUT','DELETE'],
         allowedHeaders:["Content-Type","Authorization"],
         credentials:true,
